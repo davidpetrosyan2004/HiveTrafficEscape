@@ -37,7 +37,7 @@ public class LevelGenerator : MonoBehaviour
             allHives.Add(hive);
             for (int i = 0; i < hive.capacity; i++)
             {
-                SpawnBee(colorsInt[hive.roofMaterial.name]);
+                SpawnBee(colorsInt[hive.GetMaterial().name]);
             }
         }
         for (int i = 0; i < allBees.Count; i++)
@@ -84,14 +84,14 @@ public class LevelGenerator : MonoBehaviour
 
                 var otherHive = otherObj.GetComponent<Hive>();
 
-                var beeToSwap = otherHive.bees
-                    .FirstOrDefault(b => b.GetComponent<Bee>().GetMaterial().name != hive.roofMaterial.name);
+                var beeToSwap = otherHive.beesPos
+                    .FirstOrDefault(b => b.Value.GetMaterial().name != hive.GetMaterial().name);
 
-                if (beeToSwap != null)
+                if (beeToSwap.Value != null)
                 {
-                    var myBee = hive.bees[0];
+                    var myBee = hive.beesPos.ElementAt(0).Value;
 
-                    SwapBees(myBee.transform, beeToSwap.transform);
+                    SwapBees(myBee.transform, beeToSwap.Value.transform);
                     return;
                 }
             }

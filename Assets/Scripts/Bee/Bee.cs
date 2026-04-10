@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Bee : MonoBehaviour
@@ -17,5 +18,11 @@ public class Bee : MonoBehaviour
     {
         bodyMaterial = newMaterial;
         transform.Find("Body").GetComponent<MeshRenderer>().sharedMaterial = bodyMaterial;
+    }
+
+    public void Move(Vector3 pos)
+    {
+        transform.DOMove(pos, 1f)
+            .SetEase(Ease.InOutCirc);
     }
 }

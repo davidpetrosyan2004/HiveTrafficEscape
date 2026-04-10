@@ -1,6 +1,7 @@
 using DG.Tweening;
-using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class Hive : MonoBehaviour
 {
@@ -8,9 +9,9 @@ public class Hive : MonoBehaviour
     public int capacity = 2;
     private readonly float speed = 10f;
     public Transform target = null;
-    public List<Bee> bees = new();
+    //public List<Bee> bees = new();
     public Material roofMaterial;
-    private Dictionary<Vector3, bool> beesPos = new();
+    public Dictionary<Vector3, Bee> beesPos = new();
     [SerializeField] private Transform beeStartPos;
 
     [Header("Hive References")]
@@ -36,9 +37,19 @@ public class Hive : MonoBehaviour
 
             Vector3 worldPos = beeStartPos.TransformPoint(localOffset);
 
-            beesPos.Add(worldPos, false);
+            beesPos.Add(worldPos, null);
         }
 
+    }
+
+    public Material GetMaterial()
+    {
+        return roofMaterial;
+    }
+    public void SetMaterial(Material newMaterial)
+    {
+        roofMaterial = newMaterial;
+        transform.Find("Body").GetComponent<MeshRenderer>().sharedMaterial = roofMaterial;
     }
 
     public void Move()
@@ -53,6 +64,7 @@ public class Hive : MonoBehaviour
     public void FollowPath(Vector3[] path)
     {
         transform.DOKill();
+        OpenRoof();
         rb.DOPath(path, 2f)
             .SetLookAt(0.01f)
             .SetEase(Ease.Linear);
@@ -60,8 +72,8 @@ public class Hive : MonoBehaviour
 
     public void OpenRoof()
     {
-        transform.GetChild(1).DORotate(new Vector3(0f, 0f, 90f), 1f)
-            .SetEase(Ease.OutCirc);
+        transform.GetChild(1).transform.DOLocalRotate(new Vector3(220f, 0f, 0f), 1f, RotateMode.FastBeyond360);
+
     }
 
     public bool IsHiveAhead()
@@ -81,20 +93,21 @@ public class Hive : MonoBehaviour
 
     public bool IsFull()
     {
-        return bees.Count >= capacity;
+        int count = beesPos.Count(x => x.Value != null);
+        return count >= capacity;
     }
     
     public void AddBee(Bee bee)
     {
-        bees.Add(bee);
-        bee.transform.SetParent(transform);
+        //bees.Add(bee);
+        bee.transform.parent = transform;
         foreach (var pos in beesPos)
         {
             if (!pos.Value)
             {
                 bee.transform.position = pos.Key;
                 bee.transform.rotation = transform.rotation;
-                beesPos[pos.Key] = true;
+                beesPos[pos.Key] = bee;
                 break;
             }
         }
@@ -102,7 +115,7 @@ public class Hive : MonoBehaviour
 
     public bool HasDifferentBee()
     {
-        foreach (var b in bees)
+        foreach (var b in beesPos.Values)
         {
             if (b.GetMaterial().name != roofMaterial.name)
             {
@@ -112,9 +125,20 @@ public class Hive : MonoBehaviour
         return false;
     }
 
-    public void PushBees()
+    public List<Bee> PushBees()
     {
-         
+        List<Bee> newBees = new List<Bee>();
+        for (int i = beesPos.Values.Count - 1; i >= 0; i--)
+        {
+            var beePos = beesPos.ElementAt(i).Key;
+            if (beesPos[beePos].GetMaterial().name != roofMaterial.name)
+            {
+                Debug.Log(beesPos[beePos].GetMaterial().name);
+                newBees.Add(beesPos[beePos]);
+                beesPos[beePos] = null;
+            }
+        }
+        return newBees;
     }
     public void PullBees()
     {

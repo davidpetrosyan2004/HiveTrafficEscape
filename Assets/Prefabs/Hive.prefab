@@ -231,7 +231,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hive
   capacity: 2
   target: {fileID: 0}
-  bees: []
   roofMaterial: {fileID: 0}
   beeStartPos: {fileID: 6549527488524590954}
   beePrefab: {fileID: 0}

@@ -8,7 +8,10 @@ public class Parking : MonoBehaviour
     {
         if (other.CompareTag("Hive"))
         {
-            other.GetComponentInParent<Hive>().OpenRoof();
+            var hiveScript = other.GetComponentInParent<Hive>();
+            //hiveScript.OpenRoof();
+            var bees = hiveScript.PushBees();
+            Inventory.Instance.AddBees(bees);
         }
     }
 }
