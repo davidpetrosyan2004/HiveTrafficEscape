@@ -13,11 +13,11 @@ public class Hive : MonoBehaviour
     public Material roofMaterial;
     public Dictionary<Vector3, Bee> beesPos = new();
     [SerializeField] private Transform beeStartPos;
-    [SerializeField] private Transform beePrefab;
+    [SerializeField] private Transform ballPrefab;
 
     [Header("Hive References")]
     private Rigidbody rb;
-     
+    Ray ray;
 
     private void Awake()
     {
@@ -35,8 +35,7 @@ public class Hive : MonoBehaviour
             else
                 localOffset = new Vector3(0.5f, 0, 0.5f * (i - capacity / 2));
 
-            //Vector3 worldPos = beeStartPos.TransformPoint(localOffset);
-
+            Instantiate(ballPrefab, beeStartPos.TransformPoint(localOffset), Quaternion.identity, transform);
             beesPos.Add(localOffset, null);
         }
     }
@@ -77,10 +76,10 @@ public class Hive : MonoBehaviour
 
     public bool IsHiveAhead()
     {
-        Ray ray = new(transform.position + new Vector3(0, 0.5f, 0), transform.forward);
+        ray = new(transform.position + new Vector3(0, 0.5f, 0), transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hitInfo, 300f))
         {
-            if (hitInfo.collider.CompareTag("Hive")) {
+            if (hitInfo.collider.CompareTag("Hive") && !hitInfo.collider.GetComponentInParent<Hive>().isMoving) {
                 transform.DOMove(hitInfo.point + (transform.position-hitInfo.point).normalized * 0.5f + new Vector3(0, -0.2f, 0), 0.1f)
                          .SetLoops(2, LoopType.Yoyo);
                 return true; }
@@ -96,15 +95,15 @@ public class Hive : MonoBehaviour
     
     public void AddBee(Bee bee, bool isMove=false)
     {
-        bee.transform.parent = transform;
         foreach (var pos in beesPos)
         {
             if (pos.Value == null)
             {
-                if(isMove)
-                    bee.Move(beeStartPos.TransformPoint(pos.Key));
+                if (isMove)
+                    bee.Move(beeStartPos.TransformPoint(pos.Key) + new Vector3(0, 0, 1f));
                 else
                     bee.transform.position = beeStartPos.TransformPoint(pos.Key);
+                bee.transform.parent = transform;
                 bee.transform.rotation = transform.rotation;
                 beesPos[pos.Key] = bee;
                 break;
@@ -129,7 +128,7 @@ public class Hive : MonoBehaviour
         return false;
     }
 
-    public List<Bee> PushBees()
+    public List<Bee> RemoveBees()
     {
         List<Bee> newBees = new List<Bee>();
         for (int i = beesPos.Values.Count - 1; i >= 0; i--)
@@ -143,5 +142,8 @@ public class Hive : MonoBehaviour
         }
         return newBees;
     }
-
-}
+    private void Update()
+    {
+        Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red);
+    }
+    }

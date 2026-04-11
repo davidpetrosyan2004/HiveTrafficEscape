@@ -224,7 +224,7 @@ MonoBehaviour:
   target: {fileID: 0}
   roofMaterial: {fileID: 0}
   beeStartPos: {fileID: 6401298703194993055}
-  beePrefab: {fileID: 3350680810586621922, guid: 2989366bc3f3f824e9257c51afaf5778, type: 3}
+  ballPrefab: {fileID: 8426944145489816273, guid: 1b71361108321c449a3ff1e93b346e41, type: 3}
   isMoving: 0
   hasFollowed: 0
   isFollowing: 0

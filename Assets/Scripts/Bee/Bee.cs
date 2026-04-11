@@ -23,6 +23,6 @@ public class Bee : MonoBehaviour
     public void Move(Vector3 pos)
     {
         transform.DOMove(pos, 1f)
-            .SetEase(Ease.InOutQuad);
+            .SetEase(Ease.OutCubic);
     }
 }
