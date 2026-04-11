@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Bee : MonoBehaviour
 {
-    [SerializeField] private Material bodyMaterial = null;
+    private Material bodyMaterial = null;
 
     private void Awake()
     {
@@ -23,6 +23,6 @@ public class Bee : MonoBehaviour
     public void Move(Vector3 pos)
     {
         transform.DOMove(pos, 1f)
-            .SetEase(Ease.InOutCirc);
+            .SetEase(Ease.InOutQuad);
     }
 }

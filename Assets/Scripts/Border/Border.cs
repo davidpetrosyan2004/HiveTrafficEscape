@@ -8,7 +8,7 @@ public class Border : MonoBehaviour
         if(other.CompareTag("Hive"))
         {
             other.GetComponentInParent<Hive>().hasFollowed = true;
-            GameManager.Instance.hives.Add(other.transform);
+            GameManager.Instance.hives.Add(other.GetComponentInParent<Hive>());
         }
     }
 }

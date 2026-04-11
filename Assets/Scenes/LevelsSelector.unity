@@ -800,6 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5409becaaa9874cb0dbace9a54cbde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
+  currentLevel: 
 --- !u!4 &571448347
 Transform:
   m_ObjectHideFlags: 0

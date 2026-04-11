@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Header("Box Path to Target References")]
-    public List<Transform> hives = new();
+    public List<Hive> hives = new();
     private Vector3[] pathPoints;
-    [SerializeField] private List<Transform> parkings;
+    [SerializeField] private List<Parking> parkings;
 
     [Header("References")]
     [SerializeField] private LineRenderer lineRenderer;
@@ -47,13 +47,13 @@ public class GameManager : MonoBehaviour
     {
         for (int i = hives.Count - 1; i >= 0; i--)
         {
-            var currentHive = hives[i].GetComponentInParent<Hive>();
+            var currentHive = hives[i];
             if (currentHive.hasFollowed)
             {
                 if (!currentHive.isFollowing)
                 {
                     currentHive.isFollowing = true;
-                    MoveAlongPath(hives[i].GetComponentInChildren<Collider>());
+                    MoveAlongPath(hives[i]);
                 }
             }
             else if (!currentHive.isMoving)
@@ -68,17 +68,18 @@ public class GameManager : MonoBehaviour
     public void AddHive()
     {
         ContactInfo contactInfo = rayCastDetector.DetectContact(interactableLayer);
-        if (!hives.Contains(contactInfo.transform))
+        if (!hives.Contains(contactInfo.hive) && contactInfo.hive != null)
         {
-            var target = GetFreeParking();
+            Parking target = GetFreeParking();
             if (contactInfo.contacted)
             {
                 if (target != null)
                 {
-                    if(!contactInfo.transform.GetComponentInParent<Hive>().IsHiveAhead())
-                    {    contactInfo.transform.GetComponentInParent<Hive>().target = target;
-                        target.GetComponentInParent<Parking>().isOccupied = true;
-                        hives.Add(contactInfo.transform);
+                    if(!contactInfo.hive.IsHiveAhead())
+                    {    
+                        contactInfo.hive.target = target;
+                        target.isOccupied = true;
+                        hives.Add(contactInfo.hive);
                     }
                 }
                 else
@@ -89,17 +90,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void MoveAlongPath(Collider hive)
+    public void MoveAlongPath(Hive hive)
     {
-        Vector3[] closestPath = GetClosestPath(hive.transform, pathPoints);
-        hive.GetComponentInParent<Hive>().FollowPath(closestPath);
+        Vector3[] closestPath = GetClosestPath(hive, pathPoints);
+        hive.FollowPath(closestPath);
     }
 
-    public Transform GetFreeParking()
+    public Parking GetFreeParking()
     {
-        foreach (var parking in parkings)
+        foreach (Parking parking in parkings)
         {
-            if (!parking.GetComponentInParent<Parking>().isOccupied)
+            if (!parking.isOccupied)
             {
                 return parking;
             }
@@ -107,12 +108,12 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-    Vector3[] GetClosestPath(Transform hive, Vector3[] points)
+    Vector3[] GetClosestPath(Hive hive, Vector3[] points)
     {
         // 1. Choosing the closer park
-        Transform targetParking = hive.GetComponentInParent<Hive>().target;
-        Vector3 target = targetParking.position;
-        Vector3 startPos = hive.position;
+        Parking targetParking = hive.target;
+        Vector3 target = targetParking.transform.position;
+        Vector3 startPos = hive.transform.position;
 
 
         int startIndex = GetClosestIndex(startPos, points);

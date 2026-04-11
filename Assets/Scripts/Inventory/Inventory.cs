@@ -3,15 +3,20 @@ using UnityEngine;
 using System.Linq;
 public class Inventory : MonoBehaviour
 {
-    private static Dictionary<Vector3, Bee> slotsPos = new();
     [SerializeField] private int capacity;
+
+    [Header("Lists")]
+    private static Dictionary<Vector3, Bee> slotsPos = new();
+    private List<Hive> hives = new();
+
+    [Header("References Settings")]
     [SerializeField] private Transform slotStartPos;
-    [SerializeField] private Transform beePrefab;
-    //[SerializeField] private Transform slotPrefab;
+    [SerializeField] private Transform slotPrefab;
     public static Inventory Instance { get; set; }
 
     private void Awake()
     {
+        slotsPos.Clear();
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -36,6 +41,7 @@ public class Inventory : MonoBehaviour
                 localOffset = new Vector3(1f * (i - capacity / 2), 0, 1f);
 
             Vector3 worldPos = slotStartPos.TransformPoint(localOffset);
+            Instantiate(slotPrefab, worldPos, Quaternion.Euler(90, 0, 0));
             slotsPos.Add(worldPos, null);
         }
     }
@@ -47,7 +53,7 @@ public class Inventory : MonoBehaviour
             for (int i = 0; i < slotsPos.Count; i++)
             {
                 var slotPos = slotsPos.ElementAt(i).Key;
-                if (!slotsPos[slotPos])
+                if (slotsPos[slotPos] == null)
                 {
                     bee.Move(slotPos);
                     slotsPos[slotPos] = bee;
@@ -56,5 +62,38 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void RemoveBees()
+    {
+        var keys = slotsPos.Keys.ToList();
+        foreach (var key in keys)
+        {
+            var value = slotsPos[key];
+            if (value == null) continue;
+
+            var hive = GetHiveTheSameColor(value);
+            if (hive == null) continue;
+
+            hive.AddBee(value, true);
+            slotsPos[key] = null;
+        }
+    }
+
+    public Hive GetHiveTheSameColor(Bee bee)
+    {
+        foreach (Hive hive in hives)
+        {
+            Debug.Log(hive.name);
+            if(bee.GetMaterial().name == hive.GetMaterial().name)
+            {
+                return hive;
+            }
+        }
+        return null;
+    }
+    public void AddHive(Hive hive)
+    {
+        hives.Add(hive);
     }
 }

@@ -2,20 +2,20 @@ using DG.Tweening;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Hive : MonoBehaviour
 {
     [Header("Hive Settings")]
     public int capacity = 2;
     private readonly float speed = 10f;
-    public Transform target = null;
-    //public List<Bee> bees = new();
+    public Parking target = null;
     public Material roofMaterial;
     public Dictionary<Vector3, Bee> beesPos = new();
     [SerializeField] private Transform beeStartPos;
+    [SerializeField] private Transform beePrefab;
 
     [Header("Hive References")]
-    [SerializeField] private Bee beePrefab;
     private Rigidbody rb;
      
 
@@ -35,11 +35,10 @@ public class Hive : MonoBehaviour
             else
                 localOffset = new Vector3(0.5f, 0, 0.5f * (i - capacity / 2));
 
-            Vector3 worldPos = beeStartPos.TransformPoint(localOffset);
+            //Vector3 worldPos = beeStartPos.TransformPoint(localOffset);
 
-            beesPos.Add(worldPos, null);
+            beesPos.Add(localOffset, null);
         }
-
     }
 
     public Material GetMaterial()
@@ -86,8 +85,6 @@ public class Hive : MonoBehaviour
                          .SetLoops(2, LoopType.Yoyo);
                 return true; }
         }
-        Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.forward * 300f, Color.red, 1f);
-
         return false;
     }
 
@@ -97,15 +94,17 @@ public class Hive : MonoBehaviour
         return count >= capacity;
     }
     
-    public void AddBee(Bee bee)
+    public void AddBee(Bee bee, bool isMove=false)
     {
-        //bees.Add(bee);
         bee.transform.parent = transform;
         foreach (var pos in beesPos)
         {
-            if (!pos.Value)
+            if (pos.Value == null)
             {
-                bee.transform.position = pos.Key;
+                if(isMove)
+                    bee.Move(beeStartPos.TransformPoint(pos.Key));
+                else
+                    bee.transform.position = beeStartPos.TransformPoint(pos.Key);
                 bee.transform.rotation = transform.rotation;
                 beesPos[pos.Key] = bee;
                 break;
@@ -115,13 +114,18 @@ public class Hive : MonoBehaviour
 
     public bool HasDifferentBee()
     {
-        foreach (var b in beesPos.Values)
+        var myMaterial = GetMaterial().name;
+
+        foreach (var b in beesPos)
         {
-            if (b.GetMaterial().name != roofMaterial.name)
+            if (b.Value == null) continue;
+
+            if (b.Value.GetMaterial().name != myMaterial)
             {
                 return true;
             }
         }
+
         return false;
     }
 
@@ -133,15 +137,11 @@ public class Hive : MonoBehaviour
             var beePos = beesPos.ElementAt(i).Key;
             if (beesPos[beePos].GetMaterial().name != roofMaterial.name)
             {
-                Debug.Log(beesPos[beePos].GetMaterial().name);
                 newBees.Add(beesPos[beePos]);
                 beesPos[beePos] = null;
             }
         }
         return newBees;
     }
-    public void PullBees()
-    {
 
-    }
 }

@@ -14,8 +14,8 @@ public class LevelGenerator : MonoBehaviour
 
     private Dictionary<string, int> colorsInt = new () {
         {"Red", 0},
-        {"Yellow", 1},
-        {"Blue", 2}
+        {"Blue", 1},
+        {"Yellow", 2},
     };
     private void Start()
     { 
@@ -63,35 +63,38 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    public void SwapBees(Transform bee1, Transform bee2)
+    public void SwapBees(Bee bee1, Bee bee2)
     {
-        (bee1.parent, bee2.parent) = (bee2.parent, bee1.parent);
-        (bee1.position, bee2.position) = (bee2.position, bee1.position);
-        (bee1.rotation, bee2.rotation) = (bee2.rotation, bee1.rotation);
+        (bee1.transform.parent, bee2.transform.parent) = (bee2.transform.parent, bee1.transform.parent);
+        (bee1.transform.position, bee2.transform.position) = (bee2.transform.position, bee1.transform.position);
+        (bee1.transform.rotation, bee2.transform.rotation) = (bee2.transform.rotation, bee1.transform.rotation);
     }
 
     public void CheckHivesBeesColorsSync()
     {
-        foreach (var hiveObj in allHives)
+        foreach (var hive in allHives)
         {
-            var hive = hiveObj.GetComponent<Hive>();
-
             if (hive.HasDifferentBee()) continue;
 
-            foreach (var otherObj in allHives)
+            foreach (var otherHive in allHives)
             {
-                if (otherObj == hiveObj) continue;
-
-                var otherHive = otherObj.GetComponent<Hive>();
+                if (otherHive.GetMaterial().name == hive.GetMaterial().name) continue;
 
                 var beeToSwap = otherHive.beesPos
                     .FirstOrDefault(b => b.Value.GetMaterial().name != hive.GetMaterial().name);
 
                 if (beeToSwap.Value != null)
                 {
-                    var myBee = hive.beesPos.ElementAt(0).Value;
+                    var myBee = hive.beesPos.ElementAt(0);
 
-                    SwapBees(myBee.transform, beeToSwap.Value.transform);
+                    var bee1 = myBee.Value;
+                    var bee2 = beeToSwap.Value;
+
+                    SwapBees(bee1, bee2);
+
+                    hive.beesPos[myBee.Key] = bee2;
+                    otherHive.beesPos[beeToSwap.Key] = bee1;
+                    Debug.Log("1 " + hive.name + "2 " + otherHive.name);
                     return;
                 }
             }

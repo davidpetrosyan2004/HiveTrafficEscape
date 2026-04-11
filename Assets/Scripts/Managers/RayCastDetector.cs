@@ -6,6 +6,7 @@ public struct ContactInfo
     public Vector3 point;
     public Collider collider;
     public Transform transform;
+    public Hive hive;
 }
 
 public class RayCastDetector
@@ -20,6 +21,7 @@ public class RayCastDetector
             point = hitInfo.point,
             collider = hitInfo.collider,
             transform = hitInfo.transform,
+            hive = hitInfo.transform?.GetComponentInParent<Hive>()
         };
     }
 }
