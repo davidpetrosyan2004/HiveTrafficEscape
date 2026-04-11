@@ -9,12 +9,11 @@ public class Hive : MonoBehaviour
     [Header("Hive Settings")]
     public int capacity = 2;
     private readonly float speed = 10f;
-    public Parking target = null;
+    public Parking target;
     public Material roofMaterial;
     public Dictionary<Vector3, Bee> beesPos = new();
     [SerializeField] private Transform beeStartPos;
     [SerializeField] private Transform ballPrefab;
-
     [Header("Hive References")]
     private Rigidbody rb;
     Ray ray;
@@ -34,7 +33,6 @@ public class Hive : MonoBehaviour
                 localOffset = new Vector3(0, 0, 0.5f * i);
             else
                 localOffset = new Vector3(0.5f, 0, 0.5f * (i - capacity / 2));
-
             Instantiate(ballPrefab, beeStartPos.TransformPoint(localOffset), Quaternion.identity, transform);
             beesPos.Add(localOffset, null);
         }
@@ -65,7 +63,8 @@ public class Hive : MonoBehaviour
         OpenRoof();
         rb.DOPath(path, 2f)
             .SetLookAt(0.01f)
-            .SetEase(Ease.Linear);
+            .SetEase(Ease.Linear)
+            .OnComplete(() => { Inventory.Instance.RemoveBees(); });
     }
 
     public void OpenRoof()
@@ -93,23 +92,6 @@ public class Hive : MonoBehaviour
         return count >= capacity;
     }
     
-    public void AddBee(Bee bee, bool isMove=false)
-    {
-        foreach (var pos in beesPos)
-        {
-            if (pos.Value == null)
-            {
-                if (isMove)
-                    bee.Move(beeStartPos.TransformPoint(pos.Key) + new Vector3(0, 0, 1f));
-                else
-                    bee.transform.position = beeStartPos.TransformPoint(pos.Key);
-                bee.transform.parent = transform;
-                bee.transform.rotation = transform.rotation;
-                beesPos[pos.Key] = bee;
-                break;
-            }
-        }
-    }
 
     public bool HasDifferentBee()
     {
@@ -127,23 +109,13 @@ public class Hive : MonoBehaviour
 
         return false;
     }
+    public void AddBee(Bee bee, bool isMove = false)
+    {
+        BeeUtils.ParkBee(bee, beesPos, transform, beeStartPos, isMove);
+    }
 
     public List<Bee> RemoveBees()
     {
-        List<Bee> newBees = new List<Bee>();
-        for (int i = beesPos.Values.Count - 1; i >= 0; i--)
-        {
-            var beePos = beesPos.ElementAt(i).Key;
-            if (beesPos[beePos].GetMaterial().name != roofMaterial.name)
-            {
-                newBees.Add(beesPos[beePos]);
-                beesPos[beePos] = null;
-            }
-        }
-        return newBees;
+        return BeeUtils.RemoveBees(beesPos, roofMaterial);
     }
-    private void Update()
-    {
-        Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red);
-    }
-    }
+}

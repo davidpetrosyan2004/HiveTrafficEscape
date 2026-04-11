@@ -35,7 +35,11 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(AllSlotsFulled());
     }
-
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+        GameManager.Instance.OnSlotsFulled -= EnableMessage;
+    }
     public IEnumerator AllSlotsFulled()
     {
         gameOverPanel.SetActive(true);

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Parking : MonoBehaviour
@@ -5,13 +6,14 @@ public class Parking : MonoBehaviour
     public bool isOccupied = false;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Hive"))
-        {
-            var hiveScript = other.GetComponentInParent<Hive>();
-            var bees = hiveScript.RemoveBees();
-            Inventory.Instance.AddBees(bees);
-            Inventory.Instance.AddHive(hiveScript);
-            Inventory.Instance.RemoveBees();
-        }
+        if (!other.CompareTag("Hive"))
+            return;
+
+        var hiveScript = other.GetComponentInParent<Hive>();
+
+        var bees = hiveScript.RemoveBees();
+
+        Inventory.Instance.AddHive(hiveScript);
+        Inventory.Instance.AddBees(bees);
     }
 }

@@ -41,41 +41,33 @@ public class Inventory : MonoBehaviour
                 localOffset = new Vector3(1f * (i - capacity / 2), 0, 1f);
 
             Vector3 worldPos = slotStartPos.TransformPoint(localOffset);
-            Instantiate(slotPrefab, worldPos+ new Vector3(0, 0.1f, 0), slotPrefab.transform.rotation);
-            slotsPos.Add(worldPos, null);
+            Instantiate(slotPrefab, worldPos + new Vector3(0, 0.1f, 0), slotPrefab.transform.rotation, transform);
+            slotsPos.Add(localOffset, null);
         }
     }
     public void AddBees(List<Bee> bees)
     {
-
         foreach (Bee bee in bees)
         {
-            for (int i = 0; i < slotsPos.Count; i++)
-            {
-                var slotPos = slotsPos.ElementAt(i).Key;
-                if (slotsPos[slotPos] == null)
-                {
-                    bee.Move(slotPos);
-                    slotsPos[slotPos] = bee;
-                    bee.transform.parent = transform;
-                    break;
-                }
-            }
+            BeeUtils.ParkBee(bee, slotsPos, transform, slotStartPos, true);
         }
     }
 
     public void RemoveBees()
     {
         var keys = slotsPos.Keys.ToList();
+
         foreach (var key in keys)
         {
-            var value = slotsPos[key];
-            if (value == null) continue;
+            var bee = slotsPos[key];
+            if (bee == null)
+                continue;
 
-            var hive = GetHiveTheSameColor(value);
-            if (hive == null) continue;
+            var hive = hives.FirstOrDefault(h => h.GetMaterial().name == bee.GetMaterial().name);
+            if (hive == null)
+                continue;
 
-            hive.AddBee(value, true);
+            hive.AddBee(bee, true);
             slotsPos[key] = null;
         }
     }
@@ -84,7 +76,6 @@ public class Inventory : MonoBehaviour
     {
         foreach (Hive hive in hives)
         {
-            Debug.Log(hive.name);
             if(bee.GetMaterial().name == hive.GetMaterial().name)
             {
                 return hive;
@@ -94,6 +85,12 @@ public class Inventory : MonoBehaviour
     }
     public void AddHive(Hive hive)
     {
+        Debug.Log("Added: " + hive.name);
         hives.Add(hive);
+    }
+    public void RemoveHive(Hive hive)
+    {
+        Debug.Log("Removed: " + hive.name);
+        hives.Remove(hive);
     }
 }
