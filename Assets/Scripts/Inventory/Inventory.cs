@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour
                 localOffset = new Vector3(1f * (i - capacity / 2), 0, 1f);
 
             Vector3 worldPos = slotStartPos.TransformPoint(localOffset);
-            Instantiate(slotPrefab, worldPos, Quaternion.Euler(90, 0, 0));
+            Instantiate(slotPrefab, worldPos+ new Vector3(0, 0.1f, 0), slotPrefab.transform.rotation);
             slotsPos.Add(worldPos, null);
         }
     }
