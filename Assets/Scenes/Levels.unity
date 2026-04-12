@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 19845277}
   - component: {fileID: 19845276}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,15 +146,15 @@ RectTransform:
   m_GameObject: {fileID: 19845274}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.58, z: 1}
+  m_LocalScale: {x: 2.12, y: 0.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 430751966}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.56}
+  m_SizeDelta: {x: 0, y: 5.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &19845276
 MonoBehaviour:
@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 8
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
+  m_sharedMaterial: {fileID: -175093774528421909, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 174835352}
   - component: {fileID: 174835351}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,15 +283,15 @@ RectTransform:
   m_GameObject: {fileID: 174835349}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.58, z: 1}
+  m_LocalScale: {x: 1.78, y: 0.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1506973922}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.5600002}
+  m_SizeDelta: {x: 0, y: 5.1199994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &174835351
 MonoBehaviour:
@@ -315,8 +315,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
+  m_sharedMaterial: {fileID: -175093774528421909, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 183845217}
   - component: {fileID: 183845216}
   m_Layer: 5
-  m_Name: LevelsBar
+  m_Name: LevelsBar 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 257539243}
   - component: {fileID: 257539242}
   m_Layer: 5
-  m_Name: LevelsBar (10)
+  m_Name: LevelsBar11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 268416647}
   - component: {fileID: 268416646}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -662,15 +662,15 @@ RectTransform:
   m_GameObject: {fileID: 268416644}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.58, z: 1}
+  m_LocalScale: {x: 1.99, y: 0.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 752931776}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.56}
+  m_SizeDelta: {x: 0, y: 5.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &268416646
 MonoBehaviour:
@@ -694,8 +694,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 7
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
+  m_sharedMaterial: {fileID: -175093774528421909, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -784,7 +784,7 @@ GameObject:
   - component: {fileID: 280606437}
   - component: {fileID: 280606436}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -799,15 +799,15 @@ RectTransform:
   m_GameObject: {fileID: 280606434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.58, z: 1}
+  m_LocalScale: {x: 3.04, y: 0.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 183845215}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.5599983}
+  m_SizeDelta: {x: 0, y: 5.120003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &280606436
 MonoBehaviour:
@@ -831,8 +831,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
+  m_sharedMaterial: {fileID: -175093774528421909, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -862,7 +862,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1128,7 +1128,7 @@ GameObject:
   - component: {fileID: 430751968}
   - component: {fileID: 430751967}
   m_Layer: 5
-  m_Name: LevelsBar (4)
+  m_Name: LevelsBar8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1248,7 +1248,7 @@ GameObject:
   - component: {fileID: 526776044}
   - component: {fileID: 526776043}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1263,15 +1263,15 @@ RectTransform:
   m_GameObject: {fileID: 526776041}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.58, z: 1}
+  m_LocalScale: {x: 2.67, y: 0.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 257539241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.56}
+  m_SizeDelta: {x: 0, y: 5.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &526776043
 MonoBehaviour:
@@ -1295,8 +1295,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 11
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
+  m_sharedMaterial: {fileID: -175093774528421909, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1326,7 +1326,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1461,7 +1461,7 @@ GameObject:
   - component: {fileID: 752931778}
   - component: {fileID: 752931777}
   m_Layer: 5
-  m_Name: LevelsBar (5)
+  m_Name: LevelsBar7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1673,7 +1673,7 @@ GameObject:
   - component: {fileID: 852288652}
   - component: {fileID: 852288651}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1688,15 +1688,15 @@ RectTransform:
   m_GameObject: {fileID: 852288649}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.58, z: 1}
+  m_LocalScale: {x: 1.8, y: 0.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1836015283}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.56}
+  m_SizeDelta: {x: 0, y: 5.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &852288651
 MonoBehaviour:
@@ -1720,8 +1720,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 12
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
+  m_sharedMaterial: {fileID: -175093774528421909, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1810,7 +1810,7 @@ GameObject:
   - component: {fileID: 916449201}
   - component: {fileID: 916449200}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1825,15 +1825,15 @@ RectTransform:
   m_GameObject: {fileID: 916449198}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.58, z: 1}
+  m_LocalScale: {x: 1.93, y: 0.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1238000521}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.56}
+  m_SizeDelta: {x: 0, y: 5.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &916449200
 MonoBehaviour:
@@ -1857,8 +1857,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
+  m_sharedMaterial: {fileID: -175093774528421909, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1948,7 +1948,7 @@ GameObject:
   - component: {fileID: 1073060940}
   - component: {fileID: 1073060939}
   m_Layer: 5
-  m_Name: LevelsBar (8)
+  m_Name: LevelsBar9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2144,7 +2144,7 @@ GameObject:
   - component: {fileID: 1103254799}
   - component: {fileID: 1103254798}
   m_Layer: 5
-  m_Name: LevelsBar (3)
+  m_Name: LevelsBar 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2265,7 +2265,7 @@ GameObject:
   - component: {fileID: 1115437087}
   - component: {fileID: 1115437086}
   m_Layer: 5
-  m_Name: LevelsBar (7)
+  m_Name: LevelsBar5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2385,7 +2385,7 @@ GameObject:
   - component: {fileID: 1118301467}
   - component: {fileID: 1118301466}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2400,15 +2400,15 @@ RectTransform:
   m_GameObject: {fileID: 1118301464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.58, z: 1}
+  m_LocalScale: {x: 1.84, y: 0.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1115437085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.56}
+  m_SizeDelta: {x: 0, y: 5.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1118301466
 MonoBehaviour:
@@ -2432,8 +2432,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
+  m_sharedMaterial: {fileID: -175093774528421909, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2638,7 +2638,7 @@ GameObject:
   - component: {fileID: 1238000523}
   - component: {fileID: 1238000522}
   m_Layer: 5
-  m_Name: LevelsBar (2)
+  m_Name: LevelsBar3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2759,7 +2759,7 @@ GameObject:
   - component: {fileID: 1298773593}
   - component: {fileID: 1298773592}
   m_Layer: 5
-  m_Name: LevelsBar (9)
+  m_Name: LevelsBar10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2880,7 +2880,7 @@ GameObject:
   - component: {fileID: 1506973924}
   - component: {fileID: 1506973923}
   m_Layer: 5
-  m_Name: LevelsBar (1)
+  m_Name: LevelBar2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3000,7 +3000,7 @@ GameObject:
   - component: {fileID: 1516566889}
   - component: {fileID: 1516566888}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3015,15 +3015,15 @@ RectTransform:
   m_GameObject: {fileID: 1516566886}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.58, z: 1}
+  m_LocalScale: {x: 1.67, y: 0.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1298773591}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.56}
+  m_SizeDelta: {x: 0, y: 5.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1516566888
 MonoBehaviour:
@@ -3047,8 +3047,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
+  m_sharedMaterial: {fileID: -175093774528421909, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3137,7 +3137,7 @@ GameObject:
   - component: {fileID: 1632212303}
   - component: {fileID: 1632212302}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3152,15 +3152,15 @@ RectTransform:
   m_GameObject: {fileID: 1632212300}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.58, z: 1}
+  m_LocalScale: {x: 1.94, y: 0.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1917672185}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.56}
+  m_SizeDelta: {x: 0, y: 5.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1632212302
 MonoBehaviour:
@@ -3184,8 +3184,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 6
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
+  m_sharedMaterial: {fileID: -175093774528421909, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3274,7 +3274,7 @@ GameObject:
   - component: {fileID: 1796542205}
   - component: {fileID: 1796542204}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3289,15 +3289,15 @@ RectTransform:
   m_GameObject: {fileID: 1796542202}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.58, z: 1}
+  m_LocalScale: {x: 1.93, y: 0.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1103254797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.56}
+  m_SizeDelta: {x: 0, y: 5.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1796542204
 MonoBehaviour:
@@ -3321,8 +3321,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 4
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
+  m_sharedMaterial: {fileID: -175093774528421909, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3412,7 +3412,7 @@ GameObject:
   - component: {fileID: 1836015285}
   - component: {fileID: 1836015284}
   m_Layer: 5
-  m_Name: LevelsBar (11)
+  m_Name: LevelsBar12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3533,7 +3533,7 @@ GameObject:
   - component: {fileID: 1917672187}
   - component: {fileID: 1917672186}
   m_Layer: 5
-  m_Name: LevelsBar (6)
+  m_Name: LevelsBar6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3653,7 +3653,7 @@ GameObject:
   - component: {fileID: 2106315695}
   - component: {fileID: 2106315694}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3668,15 +3668,15 @@ RectTransform:
   m_GameObject: {fileID: 2106315692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.58, z: 1}
+  m_LocalScale: {x: 1.59, y: 0.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1073060938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.56}
+  m_SizeDelta: {x: 0, y: 5.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2106315694
 MonoBehaviour:
@@ -3700,8 +3700,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 9
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
+  m_sharedMaterial: {fileID: -175093774528421909, guid: de1a04acbf9f88744885a061eeb69e3a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
