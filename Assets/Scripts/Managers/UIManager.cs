@@ -73,6 +73,7 @@ public class UIManager : MonoBehaviour
         {
             SceneName = "Level " + SceneName;
         }
+        AudioManager.Instance.PlaySound("Button");
         SceneManager.LoadScene(SceneName);
     }
 

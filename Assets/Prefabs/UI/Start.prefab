@@ -148,7 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneButtonBinder
   button: {fileID: 8581390421468718851}
   sceneName: Levels
-  isLevelButton: 0
+  levelText: {fileID: 3428699191595674954}
+  buttonType: 0
 --- !u!1 &5320223518336671372
 GameObject:
   m_ObjectHideFlags: 0
