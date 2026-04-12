@@ -7,10 +7,9 @@ using System.Collections;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
-    [SerializeField] private GameObject slotsFulledPanel;
-    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject gameEndPanel;
     public bool gameOver = false;
-    public string currentLevel = "1";
+    public int currentLevel = 1;
 
     private void Awake()
     {
@@ -25,8 +24,7 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        gameOverPanel.SetActive(false);
-        slotsFulledPanel.SetActive(false);
+        gameEndPanel.SetActive(false);
     }
 
     public void ReloadScene()
@@ -39,40 +37,54 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(AllSlotsFulled());
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
-        StopAllCoroutines();
-        gameOver = false;
-        if (SceneManager.GetActiveScene().name != "Levels" && SceneManager.GetActiveScene().name != "StartMenu")
-            GameManager.Instance.OnSlotsFulled -= EnableMessage;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
-
     private void OnEnable()
     {
-        if(SceneManager.GetActiveScene().name != "Levels" && SceneManager.GetActiveScene().name != "StartMenu")
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+    private void OnSceneUnloaded(Scene scene)
+    {
+        if (scene.name != "Levels" && scene.name != "StartMenu")
+        {
+            GameManager.Instance.OnSlotsFulled -= EnableMessage;
+        }
+        gameEndPanel.SetActive(false);
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name != "Levels" && scene.name != "StartMenu")
+        {
             GameManager.Instance.OnSlotsFulled += EnableMessage;
+            Debug.Log("Suscribe");
+        }
     }
     public IEnumerator AllSlotsFulled()
     {
-        Debug.Log("Creating Canvas");
-        slotsFulledPanel.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        slotsFulledPanel.SetActive(false);
         if(gameOver){
-            yield return new WaitForSeconds(0.8f);
-            gameOverPanel.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            gameEndPanel.SetActive(true);
         }
     }
 
     public void LoadScene(string SceneName, string ButtonType)
     {
-        if (ButtonType == "Start")
+        if (ButtonType == "CurrentLevel")
         {
-            SceneName = "Level " + currentLevel;
+            SceneName = "Level " + currentLevel.ToString();
         }
         else if(ButtonType == "Level")
         {
             SceneName = "Level " + SceneName;
+        }
+        else if(ButtonType == "NextLevel")
+        {
+            currentLevel++;
+            SceneName = "Level " + currentLevel.ToString();
         }
         AudioManager.Instance.PlaySound("Button");
         SceneManager.LoadScene(SceneName);

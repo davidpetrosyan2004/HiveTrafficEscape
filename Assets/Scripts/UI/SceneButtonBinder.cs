@@ -9,9 +9,10 @@ public class SceneButtonBinder : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelText;
     public enum levelIndex
     {
-        Start,
+        CurrentLevel,
         Level,
-        Normal
+        Normal,
+        NextLevel,
     };
     [SerializeField] private levelIndex buttonType;
     void Start()
