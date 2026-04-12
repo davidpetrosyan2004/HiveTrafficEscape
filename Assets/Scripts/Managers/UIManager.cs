@@ -54,6 +54,7 @@ public class UIManager : MonoBehaviour
     }
     public IEnumerator AllSlotsFulled()
     {
+        Debug.Log("Creating Canvas");
         slotsFulledPanel.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         slotsFulledPanel.SetActive(false);

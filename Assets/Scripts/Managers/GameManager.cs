@@ -13,13 +13,13 @@ public class GameManager : MonoBehaviour
     private Vector3[] parkingPathPoints;
     private Vector3[] finishPathPoints;
     [SerializeField] private List<Parking> parkings;
+    [SerializeField] private List<Transform> finishPaths;
 
     [Header("References")]
     [SerializeField] private LineRenderer parkingPathLine;
     [SerializeField] private LineRenderer finishPathLine;
     [SerializeField] private int interactableLayer;
     private readonly RayCastDetector rayCastDetector = new();
-    [SerializeField] private Transform redPath;
 
     [Header("Events")]
     public UnityAction OnSlotsFulled;
@@ -57,8 +57,18 @@ public class GameManager : MonoBehaviour
             var currentHive = hives[i];
             if(currentHive.isFulled)
             {
-                Debug.Log("Finish");
-                currentHive.target = redPath.position;
+                if(currentHive.GetMaterial().name == "Red")
+                {
+                    currentHive.target = finishPaths[0].position;
+                }
+                else if (currentHive.GetMaterial().name == "Blue")
+                {
+                    currentHive.target = finishPaths[1].position;
+                }
+                else if (currentHive.GetMaterial().name == "Yellow")
+                {
+                    currentHive.target = finishPaths[2].position;
+                }
                 MoveAlongPath(hives[i], finishPathPoints, true);
             }
             else if (currentHive.hasFollowed)
@@ -95,6 +105,7 @@ public class GameManager : MonoBehaviour
                         Parking targetParking = GameManager.Instance.GetFreeParking();
                         if (targetParking == null)
                         {
+                            Debug.Log("Last");
                             contactInfo.hive.isLastOne = true;
                         }
                         contactInfo.hive.target = target.transform.position;

@@ -72,6 +72,7 @@ public class Hive : MonoBehaviour
                 Parking target = GameManager.Instance.GetFreeParking();
                 if (target == null && isLastOne)
                 {
+                    Debug.Log("Game Lose");
                     isLastOne = false;
                     UIManager.Instance.gameOver = true;
                     GameManager.Instance.OnSlotsFulled?.Invoke();
