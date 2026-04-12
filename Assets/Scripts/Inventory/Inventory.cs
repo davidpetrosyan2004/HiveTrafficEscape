@@ -56,7 +56,6 @@ public class Inventory : MonoBehaviour
     public void RemoveBees()
     {
         var keys = slotsPos.Keys.ToList();
-
         foreach (var key in keys)
         {
             var bee = slotsPos[key];
@@ -68,6 +67,12 @@ public class Inventory : MonoBehaviour
                 continue;
 
             hive.AddBee(bee, true);
+            hive.isFulled = hive.IsFullWithSameColor();
+            if (hive.isFulled)
+            {
+                hive.targetParking.isOccupied = false;
+                RemoveHive(hive);
+            }
             slotsPos[key] = null;
         }
     }
@@ -85,12 +90,10 @@ public class Inventory : MonoBehaviour
     }
     public void AddHive(Hive hive)
     {
-        Debug.Log("Added: " + hive.name);
         hives.Add(hive);
     }
     public void RemoveHive(Hive hive)
     {
-        Debug.Log("Removed: " + hive.name);
         hives.Remove(hive);
     }
 }

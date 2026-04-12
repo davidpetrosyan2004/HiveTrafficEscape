@@ -94,7 +94,7 @@ public class LevelGenerator : MonoBehaviour
 
                     hive.beesPos[myBee.Key] = bee2;
                     otherHive.beesPos[beeToSwap.Key] = bee1;
-                    Debug.Log("1 " + hive.name + "2 " + otherHive.name);
+                    //Debug.Log("1 " + hive.name + "2 " + otherHive.name);
                     return;
                 }
             }

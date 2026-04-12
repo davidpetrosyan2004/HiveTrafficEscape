@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,11 +10,11 @@ public class Hive : MonoBehaviour
     [Header("Hive Settings")]
     public int capacity = 2;
     private readonly float speed = 10f;
-    public Parking target;
+    public Vector3 target;
+    public Parking targetParking;
     public Material roofMaterial;
     public Dictionary<Vector3, Bee> beesPos = new();
     [SerializeField] private Transform beeStartPos;
-    [SerializeField] private Transform ballPrefab;
     [Header("Hive References")]
     private Rigidbody rb;
     Ray ray;
@@ -33,7 +34,6 @@ public class Hive : MonoBehaviour
                 localOffset = new Vector3(0, 0, 0.5f * i);
             else
                 localOffset = new Vector3(0.5f, 0, 0.5f * (i - capacity / 2));
-            Instantiate(ballPrefab, beeStartPos.TransformPoint(localOffset), Quaternion.identity, transform);
             beesPos.Add(localOffset, null);
         }
     }
@@ -57,6 +57,7 @@ public class Hive : MonoBehaviour
     public bool isMoving = false;
     public bool hasFollowed = false;
     public bool isFollowing = false;
+    public bool isFulled= false;
     public void FollowPath(Vector3[] path)
     {
         transform.DOKill();
@@ -91,7 +92,21 @@ public class Hive : MonoBehaviour
         int count = beesPos.Count(x => x.Value != null);
         return count >= capacity;
     }
+    public bool IsFullWithSameColor()
+    {
+        int count = beesPos.Count(x => x.Value != null && x.Value.GetMaterial().name == GetMaterial().name);
+        if(count >= capacity)
+        {
+            StartCoroutine(finish());
+        }
+        return count >= capacity;
+    }
     
+    public IEnumerator finish()
+    {
+        yield return new WaitForSeconds(0.6f);
+        GameManager.Instance.hives.Add(this);
+    }
 
     public bool HasDifferentBee()
     {

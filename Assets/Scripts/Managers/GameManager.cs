@@ -10,21 +10,28 @@ public class GameManager : MonoBehaviour
 
     [Header("Box Path to Target References")]
     public List<Hive> hives = new();
-    private Vector3[] pathPoints;
+    private Vector3[] parkingPathPoints;
+    private Vector3[] finishPathPoints;
     [SerializeField] private List<Parking> parkings;
 
     [Header("References")]
-    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private LineRenderer parkingPathLine;
+    [SerializeField] private LineRenderer finishPathLine;
     [SerializeField] private int interactableLayer;
     private readonly RayCastDetector rayCastDetector = new();
+    [SerializeField] private Transform redPath;
 
     [Header("Events")]
     public UnityAction OnSlotsFulled;
 
     private void Start()
     {
-        pathPoints = new Vector3[lineRenderer.positionCount];
-        lineRenderer.GetPositions(pathPoints);
+        parkingPathPoints = new Vector3[parkingPathLine.positionCount];
+        parkingPathLine.GetPositions(parkingPathPoints);
+
+        finishPathPoints = new Vector3[parkingPathLine.positionCount];
+        finishPathLine.GetPositions(finishPathPoints);
+
         InputManager.Instance.OnMouseButtonDown += AddHive;
     }
 
@@ -48,12 +55,18 @@ public class GameManager : MonoBehaviour
         for (int i = hives.Count - 1; i >= 0; i--)
         {
             var currentHive = hives[i];
-            if (currentHive.hasFollowed)
+            if(currentHive.isFulled)
+            {
+                Debug.Log("Finish");
+                currentHive.target = redPath.position;
+                MoveAlongPath(hives[i], finishPathPoints);
+            }
+            else if (currentHive.hasFollowed)
             {
                 if (!currentHive.isFollowing)
                 {
                     currentHive.isFollowing = true;
-                    MoveAlongPath(hives[i]);
+                    MoveAlongPath(hives[i], parkingPathPoints);
                 }
             }
             else if (!currentHive.isMoving)
@@ -77,7 +90,8 @@ public class GameManager : MonoBehaviour
                 {
                     if(!contactInfo.hive.IsHiveAhead())
                     {    
-                        contactInfo.hive.target = target;
+                        contactInfo.hive.target = target.transform.position;
+                        contactInfo.hive.targetParking = target;
                         target.isOccupied = true;
                         hives.Add(contactInfo.hive);
                     }
@@ -90,7 +104,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void MoveAlongPath(Hive hive)
+    public void MoveAlongPath(Hive hive, Vector3[] pathPoints)
     {
         Vector3[] closestPath = GetClosestPath(hive, pathPoints);
         hive.FollowPath(closestPath);
@@ -111,8 +125,8 @@ public class GameManager : MonoBehaviour
     Vector3[] GetClosestPath(Hive hive, Vector3[] points)
     {
         // 1. Choosing the closer park
-        Parking targetParking = hive.target;
-        Vector3 target = targetParking.transform.position;
+        //Vector3 targetParking = hive.target;
+        Vector3 target = hive.target;
         Vector3 startPos = hive.transform.position;
 
 
