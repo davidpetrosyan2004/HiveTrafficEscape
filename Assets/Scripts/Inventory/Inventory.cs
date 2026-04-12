@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour
     [Header("References Settings")]
     [SerializeField] private Transform slotStartPos;
     [SerializeField] private Transform slotPrefab;
+
     public static Inventory Instance { get; set; }
 
     private void Awake()

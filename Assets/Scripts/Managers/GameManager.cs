@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
                 currentHive.isMoving = true;
                 currentHive.Move();
             }
+
             hives.RemoveAt(i);
         }
     }
@@ -88,17 +89,23 @@ public class GameManager : MonoBehaviour
             {
                 if (target != null)
                 {
-                    if(!contactInfo.hive.IsHiveAhead())
-                    {    
+                    if (!contactInfo.hive.IsHiveAhead())
+                    {
                         contactInfo.hive.target = target.transform.position;
                         contactInfo.hive.targetParking = target;
                         target.isOccupied = true;
+                        Parking targetParking = GameManager.Instance.GetFreeParking();
+                        if (targetParking == null)
+                        {
+                            contactInfo.hive.isLastOne = true;
+                        }
                         hives.Add(contactInfo.hive);
                     }
+                        
                 }
                 else
                 {
-                    OnSlotsFulled?.Invoke();
+                    GameManager.Instance.OnSlotsFulled?.Invoke();
                 }
             }
         }

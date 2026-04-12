@@ -7,7 +7,10 @@ using System.Collections;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
+    [SerializeField] private GameObject slotsFulledPanel;
     [SerializeField] private GameObject gameOverPanel;
+    public string currentLevel = "Level 1";
+    public bool gameOver = false;
 
     private void Awake()
     {
@@ -16,6 +19,7 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        DontDestroyOnLoad(gameObject);
         Instance = this;
 
     }
@@ -35,15 +39,27 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(AllSlotsFulled());
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         StopAllCoroutines();
         GameManager.Instance.OnSlotsFulled -= EnableMessage;
     }
     public IEnumerator AllSlotsFulled()
     {
-        gameOverPanel.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        gameOverPanel.SetActive(false);
+        slotsFulledPanel.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        slotsFulledPanel.SetActive(false);
+        if(gameOver){
+            yield return new WaitForSeconds(1f);
+            gameOverPanel.SetActive(true);
+        }
     }
+
+    public void OnStartButtonPressed() {
+        SceneManager.LoadScene(currentLevel);
+    }
+    public void OnLevelsButtonPressed() {
+        SceneManager.LoadScene("LevelsSelection");
+    }
+
 }

@@ -58,6 +58,7 @@ public class Hive : MonoBehaviour
     public bool hasFollowed = false;
     public bool isFollowing = false;
     public bool isFulled= false;
+    public bool isLastOne = false;
     public void FollowPath(Vector3[] path)
     {
         transform.DOKill();
@@ -65,7 +66,15 @@ public class Hive : MonoBehaviour
         rb.DOPath(path, 2f)
             .SetLookAt(0.01f)
             .SetEase(Ease.Linear)
-            .OnComplete(() => { Inventory.Instance.RemoveBees(); });
+            .OnComplete(() => { Inventory.Instance.RemoveBees();
+                Parking target = GameManager.Instance.GetFreeParking();
+                if (target == null && isLastOne)
+                {
+                    isLastOne = false;
+                    UIManager.Instance.gameOver = true;
+                    GameManager.Instance.OnSlotsFulled?.Invoke();
+                }
+            });
     }
 
     public void OpenRoof()
