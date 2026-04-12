@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Finish");
                 currentHive.target = redPath.position;
-                MoveAlongPath(hives[i], finishPathPoints);
+                MoveAlongPath(hives[i], finishPathPoints, true);
             }
             else if (currentHive.hasFollowed)
             {
@@ -84,37 +84,32 @@ public class GameManager : MonoBehaviour
         ContactInfo contactInfo = rayCastDetector.DetectContact(interactableLayer);
         if (!hives.Contains(contactInfo.hive) && contactInfo.hive != null)
         {
-            Parking target = GetFreeParking();
             if (contactInfo.contacted)
             {
+                Parking target = GetFreeParking();
                 if (target != null)
                 {
                     if (!contactInfo.hive.IsHiveAhead())
                     {
-                        contactInfo.hive.target = target.transform.position;
-                        contactInfo.hive.targetParking = target;
                         target.isOccupied = true;
                         Parking targetParking = GameManager.Instance.GetFreeParking();
                         if (targetParking == null)
                         {
                             contactInfo.hive.isLastOne = true;
                         }
+                        contactInfo.hive.target = target.transform.position;
+                        contactInfo.hive.targetParking = target;
                         hives.Add(contactInfo.hive);
-                    }
-                        
-                }
-                else
-                {
-                    GameManager.Instance.OnSlotsFulled?.Invoke();
+                    }  
                 }
             }
         }
     }
 
-    public void MoveAlongPath(Hive hive, Vector3[] pathPoints)
+    public void MoveAlongPath(Hive hive, Vector3[] pathPoints, bool isEnd=false)
     {
         Vector3[] closestPath = GetClosestPath(hive, pathPoints);
-        hive.FollowPath(closestPath);
+        hive.FollowPath(closestPath, isEnd);
     }
 
     public Parking GetFreeParking()

@@ -3,16 +3,21 @@ using UnityEngine;
 
 public class LevelSelector : MonoBehaviour
 {
-    [SerializeField] private int levelIndex;
+    public enum levelIndex { 
+        Start,
+        Back,
+        Level
+    };
+    [SerializeField] private levelIndex buttonType;
     [SerializeField] private TextMeshProUGUI levelText;
-    void Start()
-    {
-        levelText.text = levelIndex.ToString();
-    }
+    //void Start()
+    //{
+    //    levelText.text = levelIndex.ToString();
+    //}
 
     public void LoadLevel()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level " + levelIndex.ToString());
-        InputManager.Instance.currentLevel = "Level " + levelIndex.ToString();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level " + buttonType.ToString());
+        //InputManager.Instance.currentLevel = "Level " + levelIndex.ToString();
     }
 }

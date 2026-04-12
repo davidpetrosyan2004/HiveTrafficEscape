@@ -9,8 +9,8 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
     [SerializeField] private GameObject slotsFulledPanel;
     [SerializeField] private GameObject gameOverPanel;
-    public string currentLevel = "Level 1";
     public bool gameOver = false;
+    public string currentLevel = "1";
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         gameOverPanel.SetActive(false);
-        GameManager.Instance.OnSlotsFulled += EnableMessage;
+        slotsFulledPanel.SetActive(false);
     }
 
     public void ReloadScene()
@@ -39,10 +39,18 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(AllSlotsFulled());
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         StopAllCoroutines();
-        GameManager.Instance.OnSlotsFulled -= EnableMessage;
+        gameOver = false;
+        if (SceneManager.GetActiveScene().name != "Levels" && SceneManager.GetActiveScene().name != "StartMenu")
+            GameManager.Instance.OnSlotsFulled -= EnableMessage;
+    }
+
+    private void OnEnable()
+    {
+        if(SceneManager.GetActiveScene().name != "Levels" && SceneManager.GetActiveScene().name != "StartMenu")
+            GameManager.Instance.OnSlotsFulled += EnableMessage;
     }
     public IEnumerator AllSlotsFulled()
     {
@@ -50,16 +58,22 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         slotsFulledPanel.SetActive(false);
         if(gameOver){
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.8f);
             gameOverPanel.SetActive(true);
         }
     }
 
-    public void OnStartButtonPressed() {
-        SceneManager.LoadScene(currentLevel);
-    }
-    public void OnLevelsButtonPressed() {
-        SceneManager.LoadScene("LevelsSelection");
+    public void LoadScene(string SceneName, string ButtonType)
+    {
+        if (ButtonType == "Start")
+        {
+            SceneName = "Level " + currentLevel;
+        }
+        else if(ButtonType == "Level")
+        {
+            SceneName = "Level " + SceneName;
+        }
+        SceneManager.LoadScene(SceneName);
     }
 
 }
