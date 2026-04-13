@@ -18,6 +18,11 @@ public class SceneButtonBinder : MonoBehaviour
     [SerializeField] private levelIndex buttonType;
     void Start()
     {
+        if(buttonType == levelIndex.Level)
+        {
+            levelText.text = sceneName;
+        }
+
         button.onClick.AddListener(() => UIManager.Instance.LoadScene(sceneName, buttonType.ToString()));
     }
 }

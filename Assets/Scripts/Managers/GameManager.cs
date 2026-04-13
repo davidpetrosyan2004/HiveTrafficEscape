@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
                     if (!contactInfo.hive.IsHiveAhead())
                     {
                         target.isOccupied = true;
-                        Parking targetParking = GameManager.Instance.GetFreeParking();
+                        Parking targetParking = GetFreeParking();
                         if (targetParking == null)
                         {
                             Debug.Log("Last");

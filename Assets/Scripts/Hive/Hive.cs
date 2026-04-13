@@ -73,10 +73,10 @@ public class Hive : MonoBehaviour
                 if (target == null && isLastOne)
                 {
                     Debug.Log("Game Lose");
-                    isLastOne = false;
-                    UIManager.Instance.gameOver = true;
+                    UIManager.Instance.gameOver = true; 
                     GameManager.Instance.OnGameEnd?.Invoke(false);
                 }
+                isLastOne = false;
             });
     }
 
