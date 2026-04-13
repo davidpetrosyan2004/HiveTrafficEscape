@@ -15,6 +15,7 @@ public class Hive : MonoBehaviour
     public Material roofMaterial;
     public Dictionary<Vector3, Bee> beesPos = new();
     [SerializeField] private Transform beeStartPos;
+    [SerializeField] private GameObject beesParent;
     [Header("Hive References")]
     private Rigidbody rb;
     Ray ray;
@@ -68,14 +69,13 @@ public class Hive : MonoBehaviour
             .SetEase(Ease.Linear)
             .OnComplete(() => { 
                 Inventory.Instance.RemoveBees();
-                if(isEnd && isFulled) Destroy(gameObject);
                 Parking target = GameManager.Instance.GetFreeParking();
                 if (target == null && isLastOne)
                 {
                     Debug.Log("Game Lose");
                     isLastOne = false;
                     UIManager.Instance.gameOver = true;
-                    GameManager.Instance.OnSlotsFulled?.Invoke();
+                    GameManager.Instance.OnGameEnd?.Invoke(false);
                 }
             });
     }
@@ -83,7 +83,7 @@ public class Hive : MonoBehaviour
     public void OpenRoof()
     {
         transform.GetChild(1).transform.DOLocalRotate(new Vector3(220f, 0f, 0f), 1f, RotateMode.FastBeyond360);
-
+        beesParent.SetActive(true);
     }
 
     public bool IsHiveAhead()
@@ -138,11 +138,17 @@ public class Hive : MonoBehaviour
     }
     public void AddBee(Bee bee, bool isMove = false)
     {
-        BeeUtils.ParkBee(bee, beesPos, transform, beeStartPos, isMove);
+        BeeUtils.ParkBee(bee, beesPos, beesParent.transform, beeStartPos, isMove);
     }
 
     public List<Bee> RemoveBees()
     {
         return BeeUtils.RemoveBees(beesPos, roofMaterial);
+    }
+
+    private void Start()
+    {
+        beesParent = transform.Find("Bees").gameObject;
+        beesParent.SetActive(false);
     }
 }

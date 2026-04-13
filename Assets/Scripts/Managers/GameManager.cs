@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private readonly RayCastDetector rayCastDetector = new();
 
     [Header("Events")]
-    public UnityAction OnSlotsFulled;
+    public UnityAction<bool> OnGameEnd;
 
     private void Start()
     {

@@ -963,7 +963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1840337306591901348, guid: edd0aec4ce3b0e44ba3c0a78f2e1d432, type: 3}
       propertyPath: buttonType
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 903208736331609810, guid: edd0aec4ce3b0e44ba3c0a78f2e1d432, type: 3}
       propertyPath: m_Pivot.x
@@ -1057,7 +1057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3993262690959695996, guid: edd0aec4ce3b0e44ba3c0a78f2e1d432, type: 3}
       propertyPath: m_Name
-      value: Start
+      value: Back
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1271,7 +1271,7 @@ GameObject:
   - component: {fileID: 1143460624}
   - component: {fileID: 1143460623}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: LevelsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
