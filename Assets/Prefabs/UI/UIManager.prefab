@@ -1316,6 +1316,7 @@ MonoBehaviour:
   gameLosePanel: {fileID: 7142008446954199688}
   gameWinPanel: {fileID: 8968628807178741595}
   gamePausePanel: {fileID: 350981026002297961}
+  settingsButton: {fileID: 1561160677366512457}
   gameOver: 0
   currentLevel: 1
 --- !u!1 &2635031084882541058

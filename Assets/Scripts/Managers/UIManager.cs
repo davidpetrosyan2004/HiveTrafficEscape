@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameLosePanel;
     [SerializeField] private GameObject gameWinPanel;
     [SerializeField] private GameObject gamePausePanel;
+    [SerializeField] private GameObject settingsButton;
     private bool isSettingsPressed;
     public bool gameOver = false;
     public int currentLevel = 1;
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
         gameLosePanel.SetActive(false);
         gameWinPanel.SetActive(false);
         gamePausePanel.SetActive(false);
+        settingsButton.SetActive(false);
     }
 
     public void ReloadScene()
@@ -60,6 +62,7 @@ public class UIManager : MonoBehaviour
         gameWinPanel.SetActive(false);
         gameLosePanel.SetActive(false);
         gamePausePanel.SetActive(false);
+        settingsButton.SetActive(false);
         isSettingsPressed = false;
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -67,6 +70,7 @@ public class UIManager : MonoBehaviour
         if (scene.name != "Levels" && scene.name != "StartMenu" && scene.name != "Settings")
         {
             GameManager.Instance.OnGameEnd += EnableMessage;
+            settingsButton.SetActive(true);
         }
     }
     public IEnumerator AllSlotsFulled(bool isGameWon)
