@@ -71,10 +71,16 @@ public class UIManager : MonoBehaviour
     public IEnumerator AllSlotsFulled(bool isGameWon)
     {
         yield return new WaitForSeconds(0.5f);
-        if(isGameWon)
+        if (isGameWon)
+        {
             gameWinPanel.SetActive(true);
-        else if(gameOver && !isGameWon)
+            AudioManager.Instance.PlaySound("Win");
+        }
+        else if (gameOver && !isGameWon)
+        {
             gameLosePanel.SetActive(true);
+            AudioManager.Instance.PlaySound("Lose");
+        }
     }
 
     public void LoadScene(string SceneName, string ButtonType)

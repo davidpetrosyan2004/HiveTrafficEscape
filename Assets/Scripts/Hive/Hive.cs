@@ -50,6 +50,7 @@ public class Hive : MonoBehaviour
 
     public void Move()
     {
+        AudioManager.Instance.PlaySound("HivePush");
         transform.DOBlendableMoveBy( transform.forward, 1f / speed)
                  .SetEase(Ease.Linear)
                  .SetLoops(-1, LoopType.Incremental);

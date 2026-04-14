@@ -24,10 +24,9 @@ public class House : MonoBehaviour
         hivesCountText.text = hivesCount.ToString() + "/" + hivesRemained.ToString();
         animator.SetTrigger("Scale");
         Destroy(other.transform.parent.gameObject);
-        Debug.Log("Count Remain: " + allHiveCount);
+        AudioManager.Instance.PlaySound("HouseEnter");
         if(allHiveCount <= 0)
         {
-            Debug.Log("You Win");
             GameManager.Instance.OnGameEnd?.Invoke(true);
         }
     }
