@@ -1,7 +1,5 @@
-using UnityEditor.TerrainTools;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using UnityEngine.Events;
 using System.Collections;
 
 public class UIManager : MonoBehaviour

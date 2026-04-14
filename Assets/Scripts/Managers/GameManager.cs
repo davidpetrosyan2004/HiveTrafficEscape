@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         finishPathPoints = new Vector3[parkingPathLine.positionCount];
         finishPathLine.GetPositions(finishPathPoints);
 
-        InputManager.Instance.OnMouseButtonDown += AddHive;
+        TouchManager.Instance.OnTouchPressed += AddHive;
     }
 
     private void Update()
@@ -89,9 +89,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddHive()
+    public void AddHive(Vector2 position)
     {
-        ContactInfo contactInfo = rayCastDetector.DetectContact(interactableLayer);
+        ContactInfo contactInfo = rayCastDetector.DetectContact(interactableLayer, position);
         if (!hives.Contains(contactInfo.hive) && contactInfo.hive != null)
         {
             if (contactInfo.contacted)

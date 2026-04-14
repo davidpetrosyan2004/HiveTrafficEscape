@@ -11,9 +11,9 @@ public struct ContactInfo
 
 public class RayCastDetector
 {
-    public ContactInfo DetectContact(int layerMask)
+    public ContactInfo DetectContact(int layerMask, Vector3 position)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(position);
         bool hit = Physics.Raycast(ray, out RaycastHit hitInfo, float.PositiveInfinity, 1 << layerMask);
         return new ContactInfo
         {

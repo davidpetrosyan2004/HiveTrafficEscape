@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6414635029676806330
 Transform:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ MonoBehaviour:
   targetParking: {fileID: 0}
   roofMaterial: {fileID: 0}
   beeStartPos: {fileID: 6401298703194993055}
-  beesParent: {fileID: 0}
+  beesParent: {fileID: 7487673146190330368}
   isMoving: 0
   hasFollowed: 0
   isFollowing: 0
