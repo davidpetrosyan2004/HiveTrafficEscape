@@ -405,8 +405,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 831175182}
     m_Modifications:
     - target: {fileID: -1840337306591901348, guid: edd0aec4ce3b0e44ba3c0a78f2e1d432, type: 3}
+      propertyPath: sceneName
+      value: Settings
+      objectReference: {fileID: 0}
+    - target: {fileID: -1840337306591901348, guid: edd0aec4ce3b0e44ba3c0a78f2e1d432, type: 3}
       propertyPath: buttonType
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 903208736331609810, guid: edd0aec4ce3b0e44ba3c0a78f2e1d432, type: 3}
       propertyPath: m_Pivot.x
@@ -1194,16 +1198,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   sounds:
-  - name: Button
-    volume: 0.4
-    loop: 0
-    source: {fileID: 0}
-    clip: {fileID: 8300000, guid: 9652331e0cef6f4458e93499f0ec8558, type: 3}
   - name: theme
     volume: 0.05
     loop: 1
     source: {fileID: 0}
     clip: {fileID: 8300000, guid: 436ae0c82fff74f49bea8cda5a4361ce, type: 3}
+  - name: Button
+    volume: 0.4
+    loop: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 9652331e0cef6f4458e93499f0ec8558, type: 3}
+  - name: Win
+    volume: 0.4
+    loop: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: d810d71e322c6ac4bbc3b0380b9e3481, type: 3}
+  - name: Lose
+    volume: 0.4
+    loop: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: a8dd72b87acec4745afb5295b51aacb3, type: 3}
+  - name: HivePush
+    volume: 0.4
+    loop: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: f4e70c8776a60e645b45fde78b465706, type: 3}
+  - name: HouseEnter
+    volume: 0.4
+    loop: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 4cd2a70440235f941b62304c306aa242, type: 3}
 --- !u!4 &1755993105
 Transform:
   m_ObjectHideFlags: 0

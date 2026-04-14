@@ -1,6 +1,7 @@
-using UnityEngine.SceneManagement;
-using UnityEngine;
+using System;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class UIManager : MonoBehaviour
     }
     private void OnSceneUnloaded(Scene scene)
     {
-        if (scene.name != "Levels" && scene.name != "StartMenu")
+        if (scene.name != "Levels" && scene.name != "StartMenu" && scene.name != "Settings")
         {
             GameManager.Instance.OnGameEnd -= EnableMessage;
         }
@@ -63,7 +64,7 @@ public class UIManager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name != "Levels" && scene.name != "StartMenu")
+        if (scene.name != "Levels" && scene.name != "StartMenu" && scene.name != "Settings")
         {
             GameManager.Instance.OnGameEnd += EnableMessage;
         }
@@ -116,6 +117,20 @@ public class UIManager : MonoBehaviour
         {
             gamePausePanel.SetActive(true);
             isSettingsPressed=true;
+        }
+    }
+
+    public void OnMusicSliderChanged(float value)
+    {
+        var sound = Array.Find(AudioManager.Instance.sounds, x => x.name == "theme");
+        sound.source.volume = value;
+    }
+    public void OnSoundSliderChanged(float value)
+    {
+        foreach(var sound in AudioManager.Instance.sounds)
+        {
+            if (sound.name == "theme") continue;
+            sound.source.volume = value;
         }
     }
 }
